@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
-import net.objecthunter.exp4j.Expression
 import net.objecthunter.exp4j.ExpressionBuilder
 
     class MainActivitycalc : AppCompatActivity() {
@@ -25,7 +23,7 @@ import net.objecthunter.exp4j.ExpressionBuilder
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
+            setContentView(R.layout.activity_maincalc)
             txtInput = findViewById(R.id.txtInput)
         }
 
