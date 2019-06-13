@@ -9,19 +9,19 @@ import kotlinx.android.synthetic.main.activity_main.*
 import net.objecthunter.exp4j.Expression
 import net.objecthunter.exp4j.ExpressionBuilder
 
-    class MainActivity : AppCompatActivity() {
+    class MainActivitycalc : AppCompatActivity() {
 
         // TextView used to display the input and output
-        lateinit var txtInput: TextView
+        private lateinit var txtInput: TextView
 
         // Represent whether the lastly pressed key is numeric or not
-        var lastNumeric: Boolean = false
+        private var lastNumeric: Boolean = false
 
         // Represent that current state is in error or not
-        var stateError: Boolean = false
+        private var stateError: Boolean = false
 
         // If true, do not allow to add another DOT
-        var lastDot: Boolean = false
+        private var lastDot: Boolean = false
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -82,12 +82,36 @@ import net.objecthunter.exp4j.ExpressionBuilder
          * Delete one symbol
          */
 
-        fun onDel (view: View) {
+        fun onDel(view: View) {
             val string = txtInput.text.toString()
             if (string.isNotEmpty()) {
-                txtInput.text=string.substring(0,string.length-1)
+                txtInput.text = string.substring(0, string.length - 1)
+            } else {
+                this.txtInput.text = ""
+                lastNumeric = false
+                stateError = false
+                lastDot = false
             }
         }
+
+        /**
+         * Brackets
+         */
+
+        fun onBracket1(view: View) {
+            val string = "("
+            txtInput.append(string)
+        }
+
+        fun onBracket2(view: View) {
+            val string = ")"
+            val string1 = "("
+            val txt = txtInput.text.toString()
+            if (txt.contains(string1)) {
+                txtInput.append(string)
+            }
+        }
+
 
         /**
          * Calculate the output using Exp4j
@@ -95,22 +119,36 @@ import net.objecthunter.exp4j.ExpressionBuilder
         fun onEqual(view: View) {
             // If the current state is error, nothing to do.
             // If the last input is a number only, solution can be found.
-            if (lastNumeric && !stateError) {
-                // Read the expression
-                val txt = txtInput.text.toString()
-                // Create an Expression (A class from exp4j library)
-                val expression = ExpressionBuilder(txt).build()
-                try {
-                    // Calculate the result and display
-                    val result = expression.evaluate()
-                    txtInput.text = result.toString()
-                    lastDot = true // Result contains a dot
-                } catch (ex: ArithmeticException) {
-                    // Display an error message
-                    txtInput.text = "You idiot"
-                    stateError = true
-                    lastNumeric = false
+            val txt1 = txtInput.text.toString()
+            val string1 = "("
+            val string2 = ")"
+
+            val pattern1 = Regex("[" + string1 + "]")
+            val matcher1 = txt1
+            val count1 = pattern1.findAll(matcher1).count()
+
+            val pattern2 = Regex("[" + string2 + "]")
+            val matcher2 = txt1
+            val count2 = pattern2.findAll(matcher2).count()
+
+            if (count1 == count2) {
+                if (lastNumeric && !stateError) {
+                    // Read the expression
+                    val txt = txtInput.text.toString()
+                    // Create an Expression (A class from exp4j library)
+                    val expression = ExpressionBuilder(txt).build()
+                    try {
+                        // Calculate the result and display
+                        val result = expression.evaluate()
+                        txtInput.text = result.toString()
+                        lastDot = true // Result contains a dot
+                    } catch (ex: ArithmeticException) {
+                        // Display an error message
+                        txtInput.text = "Error"
+                        stateError = true
+                        lastNumeric = false
+                    }
                 }
-            }
+            } else {txtInput.text="Invalid format"}
         }
     }

@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="8dp"
-        tools:context=".MainActivity">
+        tools:context=".MainActivitycalc">
 
     <TextView
             android:layout_width="match_parent"
@@ -15,21 +15,23 @@
             android:textSize="32sp"
             android:id="@+id/txtInput"
             android:gravity="end|center_vertical"
-            android:maxLength="12"
+            android:maxLength="20"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="65dp" tools:layout_editor_absoluteX="8dp"/>
+            android:layout_marginTop="90dp"
+            android:textColor="@color/colorPrimaryDark"
+            tools:layout_editor_absoluteX="8dp"/>
 
     <TableLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="65dp"
+            android:layout_marginTop="90dp"
             app:layout_goneMarginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtInput"
-            android:gravity="fill">
+            android:gravity="fill" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0"
+    >
 
         <TableRow
                 android:layout_width="match_parent"
@@ -43,7 +45,7 @@
                     android:background="@color/colorPrimaryDark"
                     android:layout_height="65dp"
                     android:onClick="onDigit"
-                    android:id="@+id/btnSeven"/>
+                    android:id="@+id/btnSeven" android:textSize="18sp"/>
 
             <Button
                     android:text="8"
@@ -52,7 +54,7 @@
                     android:background="@color/colorPrimaryDark"
                     android:layout_height="65dp"
                     android:onClick="onDigit"
-                    android:id="@+id/btnEight"/>
+                    android:id="@+id/btnEight" android:textSize="18sp"/>
 
             <Button
                     android:text="9"
@@ -61,7 +63,7 @@
                     android:layout_height="65dp"
                     android:onClick="onDigit"
                     android:background="@color/colorPrimaryDark"
-                    android:id="@+id/btnNine"/>
+                    android:id="@+id/btnNine" android:textSize="18sp"/>
 
             <Button
                     android:text="/"
@@ -70,7 +72,7 @@
                     android:layout_height="65dp"
                     android:onClick="onOperator"
                     android:background="@color/colorPrimary"
-                    android:id="@+id/btnDivide"/>
+                    android:id="@+id/btnDivide" android:textSize="24sp"/>
         </TableRow>
 
         <TableRow
@@ -85,7 +87,7 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimaryDark"
                     android:onClick="onDigit"
-                    android:id="@+id/btnFour"/>
+                    android:id="@+id/btnFour" android:textSize="18sp"/>
 
             <Button
                     android:text="5"
@@ -94,7 +96,7 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimaryDark"
                     android:onClick="onDigit"
-                    android:id="@+id/btnFive"/>
+                    android:id="@+id/btnFive" android:textSize="18sp"/>
 
             <Button
                     android:text="6"
@@ -103,7 +105,7 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimaryDark"
                     android:onClick="onDigit"
-                    android:id="@+id/btnSix"/>
+                    android:id="@+id/btnSix" android:textSize="18sp"/>
 
             <Button
                     android:text="*"
@@ -112,7 +114,7 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimary"
                     android:onClick="onOperator"
-                    android:id="@+id/btnMultiply"/>
+                    android:id="@+id/btnMultiply" android:textSize="24sp"/>
         </TableRow>
 
         <TableRow
@@ -127,7 +129,7 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimaryDark"
                     android:onClick="onDigit"
-                    android:id="@+id/btnOne"/>
+                    android:id="@+id/btnOne" android:textSize="18sp"/>
 
             <Button
                     android:text="2"
@@ -136,7 +138,7 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimaryDark"
                     android:onClick="onDigit"
-                    android:id="@+id/btnTwo"/>
+                    android:id="@+id/btnTwo" android:textSize="18sp"/>
 
             <Button
                     android:text="3"
@@ -145,7 +147,7 @@
                     android:background="@color/colorPrimaryDark"
                     android:layout_height="65dp"
                     android:onClick="onDigit"
-                    android:id="@+id/btnThree"/>
+                    android:id="@+id/btnThree" android:textSize="18sp"/>
 
             <Button
                     android:text="-"
@@ -154,12 +156,13 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimary"
                     android:onClick="onOperator"
-                    android:id="@+id/btnSubtract"/>
+                    android:id="@+id/btnSubtract" android:textSize="24sp"/>
         </TableRow>
 
         <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="65dp"
+                android:background="@color/colorPrimary"
                 android:gravity="center">
 
             <Button
@@ -169,7 +172,7 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimary"
                     android:onClick="onDecimalPoint"
-                    android:id="@+id/btnDecimal"/>
+                    android:id="@+id/btnDecimal" android:textSize="24sp"/>
 
             <Button
                     android:text="0"
@@ -178,15 +181,15 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimaryDark"
                     android:onClick="onDigit"
-                    android:id="@+id/btnZero"/>
+                    android:id="@+id/btnZero" android:textSize="18sp"/>
             <Button
-                    android:text="Del"
+                    android:text="⌫"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="65dp"
                     android:background="@color/colorPrimary"
                     android:onClick="onDel"
-                    android:id="@+id/btnDel"/>
+                    android:id="@+id/btnDel" android:textSize="24sp"/>
 
             <Button
                     android:text="+"
@@ -195,36 +198,49 @@
                     android:layout_height="65dp"
                     android:background="@color/colorPrimary"
                     android:onClick="onOperator"
-                    android:id="@+id/btnAdd"/>
+                    android:id="@+id/btnAdd" android:textSize="24sp"/>
         </TableRow>
 
         <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="65dp"
+                android:background="@color/colorPrimary"
         >
 
             <Button
-                    android:text="="
+                    android:text="("
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="65dp"
+                    android:background="@color/colorPrimary"
+                    android:onClick="onBracket1"
+                    android:id="@+id/btnOpen" android:textSize="24sp"/>
+            <Button
+                    android:text=")"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="65dp"
+                    android:background="@color/colorPrimary"
+                    android:onClick="onBracket2"
+                    android:id="@+id/btnClose" android:textSize="24sp"/>
+
+            <Button
+                    android:text="＝"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="65dp"
                     android:onClick="onEqual"
                     android:background="@color/colorPrimary"
-                    android:id="@+id/btnEqual"/>
-        </TableRow>
-        <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-        >
+                    android:id="@+id/btnEqual" android:textSize="24sp"/>
 
             <Button
-                    android:text="Cl"
+                    android:text="C"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="65dp"
                     android:background="@color/colorPrimary"
                     android:onClick="onClear"
-                    android:id="@+id/btnClear"/>
+                    android:id="@+id/btnClear" android:textSize="18sp"/>
         </TableRow>
     </TableLayout>
 </android.support.constraint.ConstraintLayout>
